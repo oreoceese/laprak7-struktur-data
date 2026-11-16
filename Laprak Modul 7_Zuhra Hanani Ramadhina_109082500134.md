@@ -363,3 +363,5 @@ Program memanggil `getInputStream()` yang membaca input user per karakter hingga
 Berdasarkan praktikum yang telah dilakukan, dapat disimpulkan bahwa stack merupakan struktur data linear yang bekerja dengan prinsip LIFO, di mana penambahan dan pengambilan elemen hanya dilakukan pada satu ujung, yaitu `Top`. Implementasi stack menggunakan array memerlukan pengecekan kapasitas agar tidak terjadi stack penuh saat `push` maupun stack kosong saat `pop`, dan nilai awal `Top` (0 atau -1) menentukan cara pemetaan `Top` ke indeks array. Selain operasi dasar push dan pop, stack dapat dikembangkan dengan operasi tambahan seperti membalik isi stack, menyisipkan elemen secara terurut, dan membaca input dari user secara berurutan.
 
 ## Referensi
+[1] Setiyawan, R. D., Hermawan, D., Abdillah, A. F., Mujayanah, A., Vindua, R., dkk. (2024). Penggunaan struktur data stack dalam pemrograman C++ dengan pendekatan array dan linked list. 5(2), 484. https://jurnal.stkippersada.ac.id/jurnal/index.php/jutech/article/download/4263/pdf
+<br>[2] Universitas Esa Unggul. (n.d.). Stack. LMS Esa Unggul. https://lms-paralel.esaunggul.ac.id/mod/resource/view.php?id=28748

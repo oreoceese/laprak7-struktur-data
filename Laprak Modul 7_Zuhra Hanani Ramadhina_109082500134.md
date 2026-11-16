@@ -3,6 +3,21 @@
 
 ## Dasar Teori
 
+Stack atau tumpukan adalah struktur data linear yang menerapkan prinsip LIFO (Last In First Out), yaitu elemen yang terakhir dimasukkan akan menjadi elemen pertama yang dikeluarkan[1]. Seluruh operasi pada stack dilakukan di satu ujung saja yang disebut `Top`, sehingga elemen yang berada di bawah tidak dapat diakses sebelum elemen di atasnya dikeluarkan[2]. Stack dapat diimplementasikan menggunakan array (representasi tabel), di mana elemen disimpan dalam array berukuran tetap dan variabel `Top` menunjukkan posisi elemen teratas, atau menggunakan linked list.
+
+### A. ADT Stack dengan Array<br/>
+ADT stack memisahkan deklarasi tipe dan prosedur di file header (`.h`) dari implementasinya di file `.cpp`. Pada praktikum ini, stack dibentuk dari struct yang berisi array `info` dan variabel `Top`. Pada Guided, stack menyimpan data mahasiswa (NIM dan nama) berkapasitas 10 elemen dengan `Top` bernilai 0 saat kosong, sedangkan pada Unguided, stack menyimpan bilangan bulat berkapasitas 20 elemen dengan `top` bernilai -1 saat kosong. Stack dikatakan penuh jika `Top` sudah mencapai kapasitas array.
+
+#### 1. Tipe data — `infotype` dan struct `Stack` yang berisi array `info` serta `Top`
+#### 2. Pembuatan dan pengecekan stack — `createStack()` membuat stack kosong, `isEmpty()` mengecek apakah stack kosong
+#### 3. Penampil isi — `viewStack()` atau `printInfo()` menampilkan elemen dari `Top` ke dasar stack
+
+### B. Operasi pada Stack<br/>
+Operasi utama pada stack adalah `push` untuk menambah elemen di `Top` dan `pop` untuk mengambil elemen dari `Top`, dengan pengecekan agar tidak terjadi stack penuh saat `push` maupun stack kosong saat `pop`. Selain itu, stack dapat dikembangkan dengan operasi tambahan sesuai kebutuhan.
+
+#### 1. Push — menaikkan `Top` lalu menyimpan elemen baru pada posisi tersebut
+#### 2. Pop — mengambil elemen pada `Top` lalu menurunkan `Top`
+#### 3. Operasi tambahan — `balikStack()` untuk membalik isi stack, `pushAscending()` untuk menyisipkan elemen secara terurut, dan `getInputStream()` untuk memasukkan input user ke stack
 
 ## Guided 
 
@@ -54,6 +69,7 @@ void viewStack(Stack S);
 #endif // STACK_H_INCLUDED
 
 ```
+File header ini mendefinisikan ADT Stack dengan representasi tabel (array). Struct `infotype` menyimpan data mahasiswa berupa `nim` dan `nama`, sedangkan struct `Stack` berisi array `info` berkapasitas 10 elemen dan variabel `Top` yang menunjukkan jumlah elemen pada stack. File ini juga mendeklarasikan prototipe lima operasi, yaitu `isEmpty` untuk mengecek stack kosong, `createStack` untuk membuat stack, `push` untuk menambah elemen, `pop` untuk mengambil elemen, dan `viewStack` untuk menampilkan isi stack.
 
 ### 2. stack.cpp
 
@@ -104,7 +120,7 @@ void viewStack(Stack S) {
 }
 
 ```
-
+File ini mengimplementasikan operasi stack. `createStack()` membuat stack kosong dengan mengisi `Top` dengan 0. Fungsi `isEmpty()` mengembalikan 0 jika `Top` bernilai 0 (stack kosong) dan 1 jika stack berisi, sesuai komentar pada `stack.h`. Prosedur `push()` menaikkan `Top` lalu menyimpan data baru pada indeks `Top - 1`, karena `Top` bernilai 1 sampai 10 sedangkan indeks array bernilai 0 sampai 9, dan jika `Top` sudah mencapai 10 program menampilkan pesan stack penuh. Prosedur `pop()` menyalin data pada indeks `Top - 1` ke parameter `X` lalu menurunkan `Top`, dan jika stack kosong program menampilkan pesan bahwa tidak ada data yang bisa diambil. Prosedur `viewStack()` menampilkan seluruh isi stack dari `Top` turun ke elemen pertama, sehingga data yang terakhir dimasukkan tampil paling atas.
 
 ### 3. main.cpp
 
@@ -151,6 +167,7 @@ int main() {
 }
 
 ```
+Program utama membuat stack kosong lalu menampilkannya, sehingga muncul pesan "Stack kosong". Setelah itu program memasukkan tiga data mahasiswa (Andi, Budi, dan Citra) dengan `push()`, di mana nim dan nama diisi menggunakan `strcpy()` karena bertipe array karakter, lalu isi stack ditampilkan dengan `viewStack()`. Berikutnya program melakukan `pop()` satu kali, yang mengambil data teratas (Citra), menampilkan data yang diambil, lalu menampilkan sisa stack. Terakhir, program memanggil `pop()` tiga kali berturut-turut. Dua pemanggilan pertama mengambil Budi dan Andi, sedangkan pemanggilan ketiga menampilkan pesan stack kosong karena sudah tidak ada data tersisa, dan `viewStack()` menampilkan bahwa stack kosong.
 
 ## Unguided 
 
@@ -343,6 +360,6 @@ Program memanggil `getInputStream()` yang membaca input user per karakter hingga
 
 ## Kesimpulan
 
+Berdasarkan praktikum yang telah dilakukan, dapat disimpulkan bahwa stack merupakan struktur data linear yang bekerja dengan prinsip LIFO, di mana penambahan dan pengambilan elemen hanya dilakukan pada satu ujung, yaitu `Top`. Implementasi stack menggunakan array memerlukan pengecekan kapasitas agar tidak terjadi stack penuh saat `push` maupun stack kosong saat `pop`, dan nilai awal `Top` (0 atau -1) menentukan cara pemetaan `Top` ke indeks array. Selain operasi dasar push dan pop, stack dapat dikembangkan dengan operasi tambahan seperti membalik isi stack, menyisipkan elemen secara terurut, dan membaca input dari user secara berurutan.
 
 ## Referensi
-
